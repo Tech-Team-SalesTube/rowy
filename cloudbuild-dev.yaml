@@ -1,0 +1,15 @@
+steps:
+  - name: node:10.17.0
+    entrypoint: yarn
+    args: ["install"]
+  - name: node:10.17.0
+    entrypoint: yarn
+    args: ["build"]
+  - name: gcr.io/$PROJECT_ID/firebase
+    args:
+      - deploy
+      - --project
+      - "$PROJECT_ID"
+      - --debug
+      - --only
+      - hosting
