@@ -1,8 +1,8 @@
 steps:
-  - name: node:10.17.0
+  - name: gcr.io/cloud-builders/yarn
     entrypoint: yarn
     args: ["install"]
-  - name: node:10.17.0
+  - name: gcr.io/cloud-builders/yarn
     entrypoint: yarn
     args: ["build"]
   - name: gcr.io/$PROJECT_ID/firebase
