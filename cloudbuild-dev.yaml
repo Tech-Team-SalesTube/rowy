@@ -5,7 +5,7 @@ steps:
   - name: node:16
     entrypoint: yarn
     args: ["build"]
-  - name: gcr.io/$PROJECT_ID/firebase
+  - name: gcr.io/econometric-model-app/firebase:latest
     args:
       - deploy
       - --project
