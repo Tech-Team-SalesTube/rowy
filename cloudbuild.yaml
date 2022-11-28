@@ -13,15 +13,15 @@ steps:
   - name: node:16
     entrypoint: yarn
     args: ["build"]
-  - name: node:16
-    entrypoint: yarn
+  - name: "gcr.io/${_PROJECT_ID}/firebase"
     args:
-      - "firebase target:apply hosting rowy"
+      - target:apply
+      - hosting
+      - "${_TARGET_NAME}"
       - "${_HOSTING_TARGET}"
       - --project
       - "${_PROJECT_ID}"
   - name: "gcr.io/${_PROJECT_ID}/firebase"
-    entrypoint: yarn
     args:
       - deploy
       - --project
@@ -31,6 +31,8 @@ steps:
       - hosting
 substitutions:
   _PROJECT_ID: "${PROJECT_ID}"
+  _TARGET_NAME: "rowy"
+  _RESOURCE_IDENTIFIER: "${_HOSTING_TARGET}"
 options:
   machineType: "N1_HIGHCPU_8"
   logging: CLOUD_LOGGING_ONLY
