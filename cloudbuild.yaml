@@ -1,8 +1,8 @@
 steps:
-  - name: node:10.17.0
+  - name: node:16
     entrypoint: yarn
     args: ["install"]
-  - name: node:10.17.0
+  - name: node:16
     entrypoint: yarn
     args:
       - env
@@ -10,28 +10,26 @@ steps:
       - "${_FIREBASE_WEB_API_KEY}"
       - "${_ALGOLIA_APP_ID}"
       - "${_ALGOLIA_APP_KEY}"
-  - name: node:10.17.0
+  - name: node:16
     entrypoint: yarn
     args: ["build"]
-  - name: node:10.17.0
+  - name: node:16
     entrypoint: yarn
     args:
-      - "target"
+      - "firebase target:apply hosting rowy"
       - "${_HOSTING_TARGET}"
       - --project
       - "${_PROJECT_ID}"
-  - name: node:10.17.0
+  - name: node:16
     entrypoint: yarn
     args:
       - deploy
       - --project
       - "${_PROJECT_ID}"
       - --debug
-      - --token
-      - "${_FIREBASE_TOKEN}"
       - --only
       - hosting
 substitutions:
-  _PROJECT_ID: "project-id" # default value
+  _PROJECT_ID: "${PROJECT_ID}"
 options:
   machineType: "N1_HIGHCPU_8"
