@@ -20,7 +20,7 @@ steps:
       - "${_HOSTING_TARGET}"
       - --project
       - "${_PROJECT_ID}"
-  - name: node:16
+  - name: "gcr.io/${_PROJECT_ID}/firebase"
     entrypoint: yarn
     args:
       - deploy
