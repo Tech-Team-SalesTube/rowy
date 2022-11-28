@@ -35,4 +35,4 @@ substitutions:
   _RESOURCE_IDENTIFIER: "${_HOSTING_TARGET}"
 options:
   machineType: "N1_HIGHCPU_8"
-  logging: CLOUD_LOGGING_ONLY
+  # logging: CLOUD_LOGGING_ONLY
