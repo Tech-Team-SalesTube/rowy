@@ -33,3 +33,4 @@ substitutions:
   _PROJECT_ID: "${PROJECT_ID}"
 options:
   machineType: "N1_HIGHCPU_8"
+  logging: CLOUD_LOGGING_ONLY
