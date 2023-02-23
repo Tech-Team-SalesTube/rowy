@@ -13,7 +13,7 @@ steps:
   - name: node:16
     entrypoint: yarn
     args: ["build"]
-  - name: "gcr.io/${_PROJECT_ID}/firebase"
+  - name: "gcr.io/salestube-connectors/firebase"
     args:
       - target:apply
       - hosting
@@ -21,7 +21,7 @@ steps:
       - "${_HOSTING_TARGET}"
       - --project
       - "${_PROJECT_ID}"
-  - name: "gcr.io/${_PROJECT_ID}/firebase"
+  - name: "gcr.io/salestube-connectors/firebase"
     args:
       - deploy
       - --project
