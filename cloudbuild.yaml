@@ -28,7 +28,7 @@ steps:
       - "${PROJECT_ID}"
       - --debug
       - --only
-      - hosting
+      - hosting:"${_TARGET_NAME}"
 substitutions:
   _ALGOLIA_APP_ID: ""
   _ALGOLIA_APP_KEY: ""
