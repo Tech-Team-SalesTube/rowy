@@ -1,13 +1,13 @@
 {
   "hosting": [
     {
+      "target": "frontend",
       "public": "build",
       "ignore": [
         "firebase.json",
         "**/.*",
         "**/node_modules/**"
       ],
-      "target": "frontend",
       "rewrites": [
         {
           "source": "**",
@@ -20,10 +20,13 @@
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "storage": {
-    "rules": "storage.rules",
-    "bucket": "ga-bench-prod-1"
-  },
+  "storage": [
+    {
+      "target": "frontend",
+      "rules": "storage.rules",
+      "bucket": "ga-bench-prod-1"
+    }
+  ],
   "emulators": {
     "auth": {
       "port": 9099
