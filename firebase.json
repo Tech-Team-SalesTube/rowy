@@ -1,32 +1,25 @@
 {
-  "hosting": [
-    {
-      "target": "frontend",
-      "public": "build",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    }
-  ],
+  "hosting": {
+    "public": "build",
+    "ignore": [
+      "firebase.json",
+      "**/.*",
+      "**/node_modules/**"
+    ],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  },
   "firestore": {
     "rules": "firestore.rules",
     "indexes": "firestore.indexes.json"
   },
-  "storage": [
-    {
-      "target": "frontend",
-      "rules": "storage.rules",
-      "bucket": "ga-bench-prod-1"
-    }
-  ],
+  "storage": {
+    "rules": "storage.rules"
+  },
   "emulators": {
     "auth": {
       "port": 9099

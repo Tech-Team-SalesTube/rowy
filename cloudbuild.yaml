@@ -18,7 +18,7 @@ steps:
       - target:apply
       - hosting
       - "${_TARGET_NAME}"
-      - "${_RESOURCE_IDENTIFIER}"
+      - "${_HOSTING_TARGET}"
       - --project
       - "${PROJECT_ID}"
   - name: "gcr.io/salestube-connectors/firebase"
@@ -28,8 +28,9 @@ steps:
       - "${PROJECT_ID}"
       - --debug
       - --only
-      - hosting:"${_TARGET_NAME}"
+      - hosting
 substitutions:
+  _TARGET_NAME: "rowy"
   _ALGOLIA_APP_ID: ""
   _ALGOLIA_APP_KEY: ""
 options:
