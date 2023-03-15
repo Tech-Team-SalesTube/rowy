@@ -28,7 +28,7 @@ steps:
       - "${PROJECT_ID}"
       - --debug
       - --only
-      - hosting
+      - hosting:rowy-frontend-release
 substitutions:
   _TARGET_NAME: "rowy-release"
   _ALGOLIA_APP_ID: ""
