@@ -19,6 +19,8 @@ steps:
       - hosting
       - rowy-frontend
       - rowy-frontend-release.web.app
+      - --project
+      - "${PROJECT_ID}"
   - name: "gcr.io/salestube-connectors/firebase"
     args:
       - deploy

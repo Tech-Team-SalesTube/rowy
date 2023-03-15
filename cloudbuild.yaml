@@ -19,6 +19,8 @@ steps:
       - hosting
       - rowy
       - project-gab.web.app
+      - --project
+      - "${PROJECT_ID}"
   - name: "gcr.io/salestube-connectors/firebase"
     args:
       - deploy
