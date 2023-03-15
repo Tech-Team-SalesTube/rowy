@@ -17,10 +17,8 @@ steps:
     args:
       - target:apply
       - hosting
-      - "${_TARGET_NAME}"
-      - "${_HOSTING_TARGET}"
-      - --project
-      - "${PROJECT_ID}"
+      - rowy-frontend
+      - rowy-frontend-release.web.app
   - name: "gcr.io/salestube-connectors/firebase"
     args:
       - deploy
@@ -28,9 +26,8 @@ steps:
       - "${PROJECT_ID}"
       - --debug
       - --only
-      - hosting:rowy-frontend-release
+      - hosting:rowy-frontend-release.web.app
 substitutions:
-  _TARGET_NAME: "rowy-release"
   _ALGOLIA_APP_ID: ""
   _ALGOLIA_APP_KEY: ""
   _SERVICE_NAME: rowy-frontend
