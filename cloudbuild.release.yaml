@@ -30,7 +30,7 @@ steps:
       - --only
       - hosting
 substitutions:
-  _TARGET_NAME: "rowy"
+  _TARGET_NAME: "rowy-release"
   _ALGOLIA_APP_ID: ""
   _ALGOLIA_APP_KEY: ""
   _SERVICE_NAME: rowy-frontend
