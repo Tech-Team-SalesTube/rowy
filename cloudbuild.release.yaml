@@ -33,7 +33,7 @@ substitutions:
   _TARGET_NAME: "rowy"
   _ALGOLIA_APP_ID: ""
   _ALGOLIA_APP_KEY: ""
-  _SERVICE_NAME: rowy-frontend-$BRANCH_NAME
+  _SERVICE_NAME: rowy-frontend
 options:
   machineType: "N1_HIGHCPU_8"
 tags:
