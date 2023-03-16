@@ -6,35 +6,34 @@ steps:
     entrypoint: yarn
     args:
       - env
-      - "${PROJECT_ID}"
-      - "${_FIREBASE_WEB_API_KEY}"
-      - "${_ALGOLIA_APP_ID}"
-      - "${_ALGOLIA_APP_KEY}"
+      - ${PROJECT_ID}
+      - ${_FIREBASE_WEB_API_KEY}
+      - ${_ALGOLIA_APP_ID}
+      - ${_ALGOLIA_APP_KEY}
   - name: node:16
     entrypoint: yarn
     args: ["build"]
-  - name: "gcr.io/salestube-connectors/firebase"
+  - name: gcr.io/salestube-connectors/firebase
     args:
       - target:apply
       - hosting
-      - rowy
-      - project-gab.web.app
+      - ${_TARGET_NAME}
+      - ${_HOSTING_SITE}
       - --project
-      - "${PROJECT_ID}"
-  - name: "gcr.io/salestube-connectors/firebase"
+      - ${PROJECT_ID}
+  - name: gcr.io/salestube-connectors/firebase
     args:
       - deploy
-      - --project
-      - "${PROJECT_ID}"
       - --debug
       - --only
-      - hosting:rowy
+      - hosting:${_HOSTING_SITE}
+      - --project
+      - ${PROJECT_ID}
 substitutions:
   _ALGOLIA_APP_ID: ""
   _ALGOLIA_APP_KEY: ""
-  _SERVICE_NAME: rowy-frontend-${BRANCH_NAME}
 options:
-  machineType: "N1_HIGHCPU_8"
+  machineType: N1_HIGHCPU_8
 tags:
-  - "$_SERVICE_NAME"
+  - ${_TARGET_NAME}
   - "$BRANCH_NAME"

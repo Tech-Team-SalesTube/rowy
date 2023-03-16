@@ -2,22 +2,7 @@
   "hosting": [
     {
       "public": "build",
-      "target": "rowy-frontend",
-      "ignore": [
-        "firebase.json",
-        "**/.*",
-        "**/node_modules/**"
-      ],
-      "rewrites": [
-        {
-          "source": "**",
-          "destination": "/index.html"
-        }
-      ]
-    },
-    {
-      "public": "build",
-      "target": "rowy",
+      "site": "rowy-frontend-release",
       "ignore": [
         "firebase.json",
         "**/.*",
