@@ -68,6 +68,9 @@ export interface ITablePageProps {
  *   for `Table` using `userRolesAtom` in `projectScope`
  * - Provides `Table` with hidden columns array from user settings
  */
+
+// CUSTOM FOR SalesTube - Defines permissions `canEditOptions`
+
 export default function TablePage({
   disableModals,
   disableSideDrawer,
@@ -89,6 +92,8 @@ export default function TablePage({
     userRoles.includes("ADMIN") ||
     (!tableSettings.readOnly &&
       intersection(userRoles, tableSettings.roles).length > 0);
+  // CUSTOM (SalesTube) - MODERATOR ROLE:
+  const canEditOptions = userRoles.includes("MODERATOR");
 
   // Warn user about leaving when they have a table modal open
   useBeforeUnload(columnModalAtom, tableScope);
@@ -150,17 +155,18 @@ export default function TablePage({
               canAddColumns={canAddColumns}
               canEditColumns={canEditColumns}
               canEditCells={canEditCells}
+              canEditOptions={canEditOptions}
               hiddenColumns={
                 userSettings.tables?.[formatSubTableName(tableId)]?.hiddenFields
               }
               emptyState={
                 <EmptyState
-                  Icon={AddRowIcon}
-                  message="Add a row to get started"
+                  Icon={canAddColumns ? AddRowIcon : AddRowIcon}
+                  message={canAddColumns ? "Add a row to get started" : "No rows found"}
                   description={
                     <div>
                       <br />
-                      <AddRow />
+                      {canAddColumns && <AddRow />}
                     </div>
                   }
                   style={{ position: "absolute", inset: 0 }}
@@ -190,6 +196,7 @@ export default function TablePage({
               canAddColumns={canAddColumns}
               canEditColumns={canEditColumns}
               canDeleteColumns={canDeleteColumns}
+              canEditOptions={canEditOptions}
             />
             <ColumnModals />
           </Suspense>

@@ -36,6 +36,7 @@ export enum ROUTES {
   userSettings = "/settings/user",
   projectSettings = "/settings/project",
   members = "/members",
+  membersBis = "/membersBis",
   debug = "/debug",
 
   tutorial = "/tutorial",

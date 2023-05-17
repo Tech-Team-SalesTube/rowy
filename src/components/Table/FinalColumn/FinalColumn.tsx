@@ -44,7 +44,7 @@ export const FinalColumn = memo(function FinalColumn({
     });
   };
 
-  if (!userRoles.includes("ADMIN") && tableSettings.readOnly === true)
+  if (userRoles.includes('MODERATOR') || (!userRoles.includes("ADMIN") && tableSettings.readOnly === true))
     return null;
 
   return (

@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 import MembersIcon from "@mui/icons-material/AccountCircleOutlined";
 import SettingsIcon from "@mui/icons-material/SettingsOutlined";
+import BugReportIcon from '@mui/icons-material/BugReport';
 import { ChevronDown } from "@src/assets/icons";
 
 import NavItem from "./NavItem";
@@ -54,6 +55,14 @@ export default function SettingsNav({
           <ListItemText primary="Members" />
         </NavItem>
       </li>
+      {/* <li>
+        <NavItem to={ROUTES.membersBis} onClick={closeDrawer}>
+          <ListItemIcon>
+            <BugReportIcon />
+          </ListItemIcon>
+          <ListItemText primary="link: CUSTOM for ST" />
+        </NavItem>
+      </li> */}
 
       <li>
         <NavItem onClick={() => setOpen((o) => !o)}>

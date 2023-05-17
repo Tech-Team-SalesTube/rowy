@@ -16,6 +16,7 @@ import {
   currentUserAtom,
   userSettingsAtom,
   updateUserSettingsAtom,
+  userRolesAtom,
 } from "@src/atoms/projectScope";
 import { useScrollToHash } from "@src/hooks/useScrollToHash";
 import { UserSettings } from "@src/types/settings";
@@ -28,6 +29,8 @@ export interface IUserSettingsChildProps {
 export default function UserSettingsPage() {
   const [currentUser] = useAtom(currentUserAtom, projectScope);
   const [userSettings] = useAtom(userSettingsAtom, projectScope);
+  const [userRoles] = useAtom(userRolesAtom, projectScope);
+
   const { enqueueSnackbar } = useSnackbar();
   useScrollToHash();
 
@@ -57,8 +60,14 @@ export default function UserSettingsPage() {
   const sections = [
     { title: "Account", Component: Account, props: childProps },
     { title: "Theme", Component: Theme, props: childProps },
-    { title: "Personalization", Component: Personalization, props: childProps },
+    // { title: "Personalization", Component: Personalization, props: childProps },
   ];
+
+  const personalizationSection = { title: "Personalization", Component: Personalization, props: childProps };
+
+  if (userRoles.includes('ADMIN')) {
+    sections.push.apply(personalizationSection);
+  }
 
   return (
     <Container maxWidth="sm" sx={{ px: 1, pt: 1, pb: 7 + 3 + 3 }}>

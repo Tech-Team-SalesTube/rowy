@@ -41,7 +41,7 @@ export default function TableToolbarSkeleton() {
               color="primary"
               startIcon={<AddRowIcon />}
             >
-              Add row
+              Add row1
             </Button>
 
             <Button variant="contained" color="primary" style={{ padding: 0 }}>

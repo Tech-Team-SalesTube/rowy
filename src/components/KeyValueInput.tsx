@@ -131,7 +131,7 @@ export default function KeyValueInput({
         startIcon={<AddIcon />}
         sx={{ mt: 1 }}
       >
-        Add row
+        Add row2
       </Button>
     </FormControl>
   );

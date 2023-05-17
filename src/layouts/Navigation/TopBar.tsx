@@ -162,7 +162,7 @@ export default function TopBar({
           </Box>
         </Fade>
 
-        <Button
+        {userRoles.includes('ADMIN') && <Button
           component={NavLink}
           to={ROUTES.members}
           startIcon={<PersonAddIcon />}
@@ -177,7 +177,7 @@ export default function TopBar({
           }}
         >
           <span className="text">Invite team members</span>
-        </Button>
+        </Button>}
 
         <UserMenu />
       </Toolbar>

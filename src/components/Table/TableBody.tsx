@@ -69,6 +69,12 @@ export const TableBody = memo(function TableBody({
     paddingRight,
   } = useVirtualization(containerRef, leafColumns, columnSizing);
 
+  console.log(virtualRows);
+  console.log(virtualCols);
+  console.log(leafColumns);
+  console.log(rows);
+  
+
   const rowHeight = tableSchema.rowHeight || DEFAULT_ROW_HEIGHT;
 
   return (
@@ -80,6 +86,7 @@ export const TableBody = memo(function TableBody({
       {virtualRows.map((virtualRow) => {
         const row = rows[virtualRow.index];
         const outOfOrder = row.original._rowy_outOfOrder;
+console.log(row);
 
         return (
           <StyledRow
@@ -98,7 +105,7 @@ export const TableBody = memo(function TableBody({
 
             {virtualCols.map((virtualCell) => {
               const cellIndex = virtualCell.index;
-              const cell = row.getVisibleCells()[cellIndex];
+              const cell = row.getVisibleCells()[cellIndex];              
 
               const isSelectedCell =
                 selectedCell?.path === row.original._rowy_ref.path &&

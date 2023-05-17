@@ -262,6 +262,8 @@ export default function TableSettingsDialog() {
       : null
   );
 
+  console.log(fields);
+  
   return (
     <FormDialog
       onClose={clearDialog}

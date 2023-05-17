@@ -59,6 +59,7 @@ export default function PopupContents({
     async (query: string) => {
       if (!docData) return;
       if (!url) return;
+      console.log(docData)
       const uri = new URL(url);
       const params: any = { q: query };
       Object.keys(params).forEach((key) =>

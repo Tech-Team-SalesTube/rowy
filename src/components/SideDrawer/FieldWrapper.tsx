@@ -38,6 +38,8 @@ export interface IFieldWrapperProps {
   disabled?: boolean;
   hidden?: boolean;
   index?: number;
+  // CUSTOM for SalesTube:
+  grantedAccessST?: boolean;
 }
 
 export default function FieldWrapper({
@@ -49,6 +51,7 @@ export default function FieldWrapper({
   disabled,
   hidden,
   index,
+  grantedAccessST
 }: IFieldWrapperProps) {
   const [projectId] = useAtom(projectIdAtom, projectScope);
   const [altPress] = useAtom(altPressAtom, projectScope);
@@ -147,6 +150,7 @@ export default function FieldWrapper({
             size="small"
             edge="end"
             sx={{ ml: 1 }}
+            disabled={!grantedAccessST}
           >
             <LaunchIcon />
           </IconButton>

@@ -83,12 +83,15 @@ export interface IColumnMenuProps {
   canAddColumns: boolean;
   canEditColumns: boolean;
   canDeleteColumns: boolean;
+  // CUSTOM (SalesTube):
+  canEditOptions: boolean;
 }
 
 export default function ColumnMenu({
   canAddColumns,
   canEditColumns,
   canDeleteColumns,
+  canEditOptions,
 }: IColumnMenuProps) {
   const [userSettings] = useAtom(userSettingsAtom, projectScope);
   const [updateUserSettings] = useAtom(updateUserSettingsAtom, projectScope);
@@ -239,7 +242,31 @@ export default function ColumnMenu({
       active: column.hidden,
       disabled: !getFieldProp("filter", column.type),
     },
+    // {
+    //   label: `Column config…`,
+    //   key: "columConfig",
+    //   icon: <SettingsIcon />,
+    //   onClick: () => {
+    //     openColumnModal({ type: "config", columnKey: column.key });
+    //     handleClose();
+    //   },
+    //   disabled: !isConfigurable,
+    // },
   ];
+// CUSTOM for SalesTube:
+  const configModeratorActions: IMenuContentsProps["menuItems"] = [
+    { type: "subheader", key: "subModeratorActionsConfig" },
+    {
+      label: `Column config… Add options`,
+      key: "columConfig",
+      icon: <SettingsIcon />,
+      onClick: () => {
+        openColumnModal({ type: "config", columnKey: column.key });
+        handleClose();
+      },
+      disabled: !isConfigurable,
+    },
+  ]
 
   const configActions: IMenuContentsProps["menuItems"] = [
     { type: "subheader", key: "subActionsConfig" },
@@ -474,6 +501,10 @@ export default function ColumnMenu({
   }
   if (canAddColumns || canDeleteColumns) {
     menuItems.push.apply(menuItems, columnActions);
+  }
+  // CUSTOM for SalesTube:
+  if (canEditOptions && !canAddColumns && column.key === 'category') {
+    menuItems.push.apply(menuItems, configModeratorActions);
   }
 
   return (

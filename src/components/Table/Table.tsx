@@ -68,6 +68,8 @@ export interface ITableProps {
    * Loading state handled by Suspense in parent component.
    */
   emptyState?: React.ReactNode;
+  // CUSTOM (SalesTube)
+  canEditOptions?: boolean;
 }
 
 /**

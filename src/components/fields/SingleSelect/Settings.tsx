@@ -1,6 +1,16 @@
 import { useState, useRef } from "react";
 import { ISettingsProps } from "@src/components/fields/types";
 
+
+// CUSTOM for SalesTube:
+import { useAtom } from "jotai";
+
+import {
+  projectScope,
+  userRolesAtom,
+} from "@src/atoms/projectScope";
+
+
 import {
   InputLabel,
   TextField,
@@ -16,6 +26,10 @@ import AddIcon from "@mui/icons-material/AddCircle";
 import RemoveIcon from "@mui/icons-material/CancelRounded";
 
 export default function Settings({ onChange, config }: ISettingsProps) {
+    // CUSTOM for SalesTube:
+    const [userRoles] = useAtom(userRolesAtom, projectScope);
+  console.log(config);
+  
   const listEndRef: any = useRef(null);
   const options = config.options ?? [];
   const [newOption, setNewOption] = useState("");
@@ -103,7 +117,7 @@ export default function Settings({ onChange, config }: ISettingsProps) {
         </Grid>
       </Grid>
 
-      <FormControlLabel
+      {userRoles.includes("ADMIN") && <FormControlLabel
         control={
           <Checkbox
             checked={config.freeText}
@@ -120,7 +134,7 @@ export default function Settings({ onChange, config }: ISettingsProps) {
           </>
         }
         style={{ marginLeft: -10 }}
-      />
+      />}
     </div>
   );
 }

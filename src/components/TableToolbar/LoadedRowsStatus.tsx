@@ -11,6 +11,7 @@ import {
   tableRowsAtom,
   tableNextPageAtom,
   serverDocCountAtom,
+  tableRowsLocalAtom,
 } from "@src/atoms/tableScope";
 import { spreadSx } from "@src/utils/ui";
 
@@ -60,6 +61,13 @@ function LoadedRowsStatus() {
   const [tableNextPage] = useAtom(tableNextPageAtom, tableScope);
   const [serverDocCount] = useAtom(serverDocCountAtom, tableScope);
   const [tableRows] = useAtom(tableRowsAtom, tableScope);
+
+  console.log(tableRows);
+  console.log(tableRowsAtom);
+  console.log(tableRowsLocalAtom);
+  console.log(typeof tableScope);
+  
+  
 
   if (tableNextPage.loading)
     return <StatusText>{loadingIcon}Loading more…</StatusText>;

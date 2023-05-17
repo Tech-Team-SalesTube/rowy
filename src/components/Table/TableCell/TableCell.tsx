@@ -86,6 +86,25 @@ export const TableCell = memo(function TableCell({
   const setSelectedCell = useSetAtom(selectedCellAtom, tableScope);
   const setContextMenuTarget = useSetAtom(contextMenuTargetAtom, tableScope);
 
+  let customBgStyle;
+  let customFontColor;
+  if (cell.column.id === "_rowy_column_actions") {
+    customBgStyle = "transparent";
+  } else if (cell.column.id === "category" && row.original.dashboard === true) {
+      customFontColor = '#0a0000de';
+    if (row.original.category) {
+      customBgStyle = '#81c784';
+    } else {
+      customBgStyle = '#ff9a91'
+    }
+  } else {
+    customBgStyle = undefined;
+    customFontColor = 'inherit';
+  }
+
+
+  
+
   const value = cell.getValue();
   const required = cell.column.columnDef.meta?.config?.required;
   const validationRegex = cell.column.columnDef.meta?.config?.validationRegex;
@@ -158,11 +177,13 @@ export const TableCell = memo(function TableCell({
         position: isPinned ? "sticky" : "absolute",
         left: left - (isPinned ? TABLE_PADDING : 0),
         backgroundColor:
-          cell.column.id === "_rowy_column_actions" ? "transparent" : undefined,
+          // cell.column.id === "_rowy_column_actions" ? "transparent" : undefined,
+          customBgStyle,
         borderBottomWidth:
           cell.column.id === "_rowy_column_actions" ? 0 : undefined,
         borderRightWidth:
           cell.column.id === "_rowy_column_actions" ? 0 : undefined,
+        color: customFontColor,
       }}
       onClick={(e) => {
         setSelectedCell({

@@ -39,6 +39,7 @@ import {
 import { firebaseDbAtom } from "@src/sources/ProjectSourceFirebase";
 import { COLLECTION_PAGE_SIZE } from "@src/config/db";
 import { getDateRange, getTimeRange } from "@src/utils/date";
+import { tableScope } from "@src/atoms/tableScope";
 
 /** Options for {@link useFirestoreCollectionWithAtom} */
 interface IUseFirestoreCollectionWithAtomOptions<T> {
@@ -189,6 +190,14 @@ export function useFirestoreCollectionWithAtom<
             _rowy_ref: doc.ref,
           }));
           setDataAtom(docs);
+          console.log(memoizedQuery);
+          console.log(memoizedQuery.query);
+          
+          console.log(docs);
+          console.log(tableScope)
+          console.log(Object.getOwnPropertySymbols(tableScope));
+          
+          
           // If the snapshot doesn’t fill the page, it’s the last page
           if (docs.length < memoizedQuery.limit) setIsLastPage(true);
           // Make sure to unset in case of mistake
@@ -256,7 +265,7 @@ export function useFirestoreCollectionWithAtom<
     if (updateDocAtom) {
       setUpdateDocAtom(
         () => (path: string, update: T, deleteFields?: string[]) => {
-          const updateToDb = { ...update };
+          const updateToDb = { ...update };          
 
           if (Array.isArray(deleteFields)) {
             for (const field of deleteFields) {
@@ -311,7 +320,7 @@ const getQuery = <T>(
   filters: IUseFirestoreCollectionWithAtomOptions<T>["filters"],
   sorts: IUseFirestoreCollectionWithAtomOptions<T>["sorts"],
   onError: IUseFirestoreCollectionWithAtomOptions<T>["onError"]
-) => {
+) => {  
   if (!path || (Array.isArray(pathSegments) && pathSegments.some((x) => !x)))
     return null;
 
@@ -330,6 +339,9 @@ const getQuery = <T>(
         ...((pathSegments as string[]) || [])
       ) as CollectionReference<T>;
     }
+    const Myjson = collectionRef
+    console.log(Myjson);
+    
 
     if (!collectionRef) return null;
     const limit = (page + 1) * pageSize;

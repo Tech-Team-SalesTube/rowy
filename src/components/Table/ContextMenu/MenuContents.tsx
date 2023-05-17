@@ -95,6 +95,7 @@ export default function MenuContents({ onClose }: IMenuContentsProps) {
     {
       label: "Open in Firebase Console",
       icon: <OpenIcon />,
+      disabled: userRoles.includes('MODERATOR'),
       onClick: () => {
         window.open(
           `https://console.firebase.google.com/project/${projectId}/firestore/data/~2F${row._rowy_ref.path.replace(
@@ -111,7 +112,7 @@ export default function MenuContents({ onClose }: IMenuContentsProps) {
       icon: <DuplicateIcon />,
       disabled:
         tableSettings.tableType === "collectionGroup" ||
-        (!userRoles.includes("ADMIN") && tableSettings.readOnly),
+        (!userRoles.includes("ADMIN") && tableSettings.readOnly) || userRoles.includes('MODERATOR'),
       onClick: altPress
         ? handleDuplicate
         : () => {
@@ -136,7 +137,7 @@ export default function MenuContents({ onClose }: IMenuContentsProps) {
       label: altPress ? "Delete" : "Delete…",
       color: "error",
       icon: <DeleteIcon />,
-      disabled: !userRoles.includes("ADMIN") && tableSettings.readOnly,
+      disabled: ((!userRoles.includes("ADMIN") && tableSettings.readOnly) || userRoles.includes('MODERATOR')),
       onClick: altPress
         ? handleDelete
         : () => {

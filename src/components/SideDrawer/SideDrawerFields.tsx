@@ -129,6 +129,7 @@ export default function SideDrawerFields({ row }: ISideDrawerFieldsProps) {
         fieldName="_rowy_ref.path"
         label="Document path"
         debugText={row._rowy_ref.path ?? row._rowy_ref.id ?? "No ref"}
+        grantedAccessST={userRoles.includes('ADMIN')}
       />
 
       {userDocHiddenFields.length > 0 && (

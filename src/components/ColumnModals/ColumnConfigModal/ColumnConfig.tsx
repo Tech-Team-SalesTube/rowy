@@ -16,7 +16,9 @@ import {
   projectScope,
   rowyRunAtom,
   confirmDialogAtom,
+  userRolesAtom,
 } from "@src/atoms/projectScope";
+
 import {
   tableScope,
   tableSettingsAtom,
@@ -47,6 +49,10 @@ export default function ColumnConfigModal({
   const customFieldSettings = getFieldProp("settings", column.type);
   const settingsValidator = getFieldProp("settingsValidator", column.type);
   const initializable = getFieldProp("initializable", column.type);
+
+  // CUSTOM for SalesTube:
+  const [userRoles] = useAtom(userRolesAtom, projectScope);
+
 
   const rendedFieldSettings = useMemo(
     () =>
@@ -92,7 +98,7 @@ export default function ColumnConfigModal({
       children={
         <Suspense fallback={<Loading fullScreen={false} />}>
           <>
-            {initializable && (
+            {initializable && userRoles.includes("ADMIN") && (
               <>
                 <section style={{ marginTop: 1 }}>
                   {/* top margin fixes visual bug */}

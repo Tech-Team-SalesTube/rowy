@@ -58,6 +58,7 @@ const UserSettingsPage = lazy(() => import("@src/pages/Settings/UserSettingsPage
 const ProjectSettingsPage = lazy(() => import("@src/pages/Settings/ProjectSettingsPage" /* webpackChunkName: "ProjectSettingsPage" */));
 // prettier-ignore
 const MembersPage = lazy(() => import("@src/pages/Settings/MembersPage" /* webpackChunkName: "MembersPage" */));
+const MembersPageBis = lazy(() => import("@src/pages/Settings/MembersPageBis" /* webpackChunkName: "MembersPageBis" */));
 // prettier-ignore
 const DebugPage = lazy(() => import("@src/pages/Settings/DebugPage" /* webpackChunkName: "DebugPage" */));
 
@@ -168,6 +169,7 @@ export default function App() {
               }
             />
             <Route path={ROUTES.members} element={<MembersPage />} />
+            <Route path={ROUTES.membersBis} element={<MembersPageBis />} />
 
             <Route path={ROUTES.debug} element={<DebugPage />} />
           </Route>

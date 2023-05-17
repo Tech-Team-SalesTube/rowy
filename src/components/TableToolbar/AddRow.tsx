@@ -74,7 +74,7 @@ export default function AddRow() {
 
   return (
     <>
-      <ButtonGroup
+      {userRoles.includes("ADMIN") && <ButtonGroup
         variant="contained"
         color="primary"
         aria-label="Split button"
@@ -109,7 +109,7 @@ export default function AddRow() {
         >
           <ArrowDropDownIcon />
         </Button>
-      </ButtonGroup>
+      </ButtonGroup>}
 
       <Select
         id="add-row-menu"
@@ -201,7 +201,7 @@ export default function AddRow() {
           }
           onClose={() => setOpenIdModal(false)}
           DialogProps={{ maxWidth: "xs" }}
-          SubmitButtonProps={{ children: "Add row" }}
+          SubmitButtonProps={{ children: "Add one row" }}
         />
       )}
     </>

@@ -20,6 +20,11 @@ export default function FinalColumnHeader({
   const [userRoles] = useAtom(userRolesAtom, projectScope);
   const openColumnModal = useSetAtom(columnModalAtom, tableScope);
 
+  // CUSTOM for SalesTube:
+  if (userRoles.includes("MODERATOR"))
+    return null; 
+  // ===end CUSTOM
+
   if (!userRoles.includes("ADMIN"))
     return (
       <Box
