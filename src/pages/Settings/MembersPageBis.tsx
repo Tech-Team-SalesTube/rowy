@@ -27,7 +27,7 @@ function MembersPageBis() {
   const [users] = useAtom(allUsersAtom, projectScope);
   const [results, query, handleQuery] = useBasicSearch(users, SEARCH_KEYS);
 
-  console.log(users);
+  // console.log(users);
 
   return (
     <Container maxWidth="sm" sx={{ px: 1, pt: 1, pb: 7 + 3 + 3 }}>
