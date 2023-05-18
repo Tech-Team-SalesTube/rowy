@@ -2,6 +2,7 @@
 
 # dependencies
 /node_modules
+/node_modules_1
 /.pnp
 .pnp.js
 
@@ -35,4 +36,4 @@ typedoc/
 
 # set-user-roles.js
 # firebase-service-account.json
-
+commands.txt
