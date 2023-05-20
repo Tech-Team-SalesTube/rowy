@@ -190,12 +190,12 @@ export function useFirestoreCollectionWithAtom<
             _rowy_ref: doc.ref,
           }));
           setDataAtom(docs);
-          console.log(memoizedQuery);
-          console.log(memoizedQuery.query);
+          // console.log(memoizedQuery);
+          // console.log(memoizedQuery.query);
           
-          console.log(docs);
-          console.log(tableScope)
-          console.log(Object.getOwnPropertySymbols(tableScope));
+          // console.log(docs);
+          // console.log(tableScope)
+          // console.log(Object.getOwnPropertySymbols(tableScope));
           
           
           // If the snapshot doesn’t fill the page, it’s the last page
@@ -340,7 +340,7 @@ const getQuery = <T>(
       ) as CollectionReference<T>;
     }
     const Myjson = collectionRef
-    console.log(Myjson);
+    // console.log(Myjson);
     
 
     if (!collectionRef) return null;

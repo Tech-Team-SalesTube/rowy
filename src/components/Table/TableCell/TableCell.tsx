@@ -4,6 +4,8 @@ import { ErrorBoundary } from "react-error-boundary";
 import { flexRender } from "@tanstack/react-table";
 import type { Row, Cell } from "@tanstack/react-table";
 
+import { useTheme } from "@mui/material";
+
 import ErrorIcon from "@mui/icons-material/ErrorOutline";
 import WarningIcon from "@mui/icons-material/WarningAmber";
 
@@ -86,6 +88,9 @@ export const TableCell = memo(function TableCell({
   const setSelectedCell = useSetAtom(selectedCellAtom, tableScope);
   const setContextMenuTarget = useSetAtom(contextMenuTargetAtom, tableScope);
 
+  const theme = useTheme();
+
+
   let customBgStyle;
   let customFontColor;
   if (cell.column.id === "_rowy_column_actions") {
@@ -93,9 +98,9 @@ export const TableCell = memo(function TableCell({
   } else if (cell.column.id === "category" && row.original.dashboard === true) {
       customFontColor = '#0a0000de';
     if (row.original.category) {
-      customBgStyle = '#81c784';
+      theme.palette.mode === 'light' ? customBgStyle = '#34c759': customBgStyle = '#81c784';
     } else {
-      customBgStyle = '#ff9a91'
+      customBgStyle = '#ff9a91';
     }
   } else {
     customBgStyle = undefined;

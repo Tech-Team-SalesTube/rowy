@@ -10,7 +10,7 @@ export interface ILogoProps extends SVGProps<SVGSVGElement> {
 
 export default function Logo({ size = 1.5, ...props }: ILogoProps) {
   const theme = useTheme();
-  console.log(theme);
+  // console.log(theme);
   
 
   return (

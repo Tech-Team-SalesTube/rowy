@@ -62,10 +62,10 @@ function LoadedRowsStatus() {
   const [serverDocCount] = useAtom(serverDocCountAtom, tableScope);
   const [tableRows] = useAtom(tableRowsAtom, tableScope);
 
-  console.log(tableRows);
-  console.log(tableRowsAtom);
-  console.log(tableRowsLocalAtom);
-  console.log(typeof tableScope);
+  // console.log(tableRows);
+  // console.log(tableRowsAtom);
+  // console.log(tableRowsLocalAtom);
+  // console.log(typeof tableScope);
   
   
 

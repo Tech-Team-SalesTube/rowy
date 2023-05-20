@@ -1,5 +1,6 @@
 import { useState, Suspense } from "react";
-import { useSetAtom } from "jotai";
+import { useAtom, useSetAtom } from "jotai";
+
 import { colord } from "colord";
 
 import {
@@ -35,7 +36,7 @@ import CommunityMenu from "./CommunityMenu";
 import HelpMenu from "./HelpMenu";
 import { INavDrawerContentsProps } from "./NavDrawerContents";
 
-import { projectScope, getStartedChecklistAtom } from "@src/atoms/projectScope";
+import { projectScope, getStartedChecklistAtom, userRolesAtom} from "@src/atoms/projectScope";
 import { EXTERNAL_LINKS, WIKI_LINKS } from "@src/constants/externalLinks";
 import { TOP_BAR_HEIGHT } from "@src/layouts/Navigation/TopBar";
 import useGetStartedCompletion from "@src/components/GetStartedChecklist/useGetStartedCompletion";
@@ -60,6 +61,9 @@ export default function NavDrawer({
   const collapsed = !open && isPermanent;
   const setHover = collapsed ? _setHover : () => {};
   const tempExpanded = hover && collapsed;
+  // CUSTOM for SalesTube:
+  const [userRoles] = useAtom(userRolesAtom, projectScope);
+
 
   const width =
     collapsed && !tempExpanded ? NAV_DRAWER_COLLAPSED_WIDTH : NAV_DRAWER_WIDTH;
@@ -231,7 +235,7 @@ export default function NavDrawer({
                 setHover={setHover}
               />
             </Suspense>
-
+            {(userRoles.includes('ADMIN') || userRoles.includes('EDITOR')) && 
             <List
               component="li"
               disablePadding
@@ -375,6 +379,7 @@ export default function NavDrawer({
                 </li>
               </ol>
             </List>
+            }
           </List>
         </nav>
       </Drawer>
