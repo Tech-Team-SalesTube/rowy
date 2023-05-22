@@ -35,5 +35,6 @@ firebase-debug.log*
 typedoc/
 
 # set-user-roles.js
-# firebase-service-account.json
+.credentials/
+firebase-service-account.json
 commands.txt
