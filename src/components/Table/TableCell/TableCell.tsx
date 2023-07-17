@@ -102,6 +102,13 @@ export const TableCell = memo(function TableCell({
     } else {
       customBgStyle = '#ff9a91';
     }
+  } else if (cell.column.id === "customFilter" && row.original.dashboard === true) {
+      customFontColor = '#0a0000de';
+    if (row.original.customFilter) {
+      theme.palette.mode === 'light' ? customBgStyle = '#34c759': customBgStyle = '#81c784';
+    } else {
+      customBgStyle = 'inherit';
+    }
   } else {
     customBgStyle = undefined;
     customFontColor = 'inherit';

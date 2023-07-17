@@ -503,7 +503,7 @@ export default function ColumnMenu({
     menuItems.push.apply(menuItems, columnActions);
   }
   // CUSTOM for SalesTube:
-  if (canEditOptions && !canAddColumns && column.key === 'category') {
+  if (canEditOptions && !canAddColumns && (column.key === 'category' || column.key === 'customFilter')) {
     menuItems.push.apply(menuItems, configModeratorActions);
   }
 
